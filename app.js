@@ -3,6 +3,12 @@ const app = express()
 const port = 3000
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/todo', { useNewUrlParser: true, useCreateIndex: true })
+const db = mongoose.connection
+
+
+
 
 
 // Set body-parser
@@ -13,18 +19,22 @@ app.use(bodyParser.json())
 app.engine('handlebars', exphbs())
 app.set('view engine', 'handlebars')
 
+// 使用"連續"監聽器：listen to error
+db.on('error', () => {
+  console.log('mongoose connect error')
+})
 
-const router = express.Router();
+// 使用"一次性"監聽器：listen to success
+db.once('open', () => {
+  console.log('mongoose connect success')
+})
 
-router.get('/', function (req, res) {
-  res.json({ "error": false, "message": "Hello !" });
-});
 
-router.post('/add', function (req, res) {
-  res.json({ "error": false, "message": "success", "data": req.body.num1 + req.body.num2 });
-});
 
-app.use('/', router);
+// ===============route setting=============
+
+
+app.use('/', require('./routes/home'));
 
 
 
