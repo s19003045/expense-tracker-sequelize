@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema()
+const Schema = mongoose.Schema
 
 const userSchema = new Schema({
   name: {
@@ -20,4 +20,6 @@ const userSchema = new Schema({
   },
 })
 
+
+// Covert Schema into model and export it
 module.export = mongoose.model('Record', userSchema)

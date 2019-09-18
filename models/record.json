@@ -1,0 +1,76 @@
+{
+  "results": [
+    {
+      "name": "中餐",
+      "category": "餐飲食品",
+      "amount": 3,
+      "unitPrice": 50
+    },
+    {
+      "name": "中餐",
+      "category": "餐飲食品",
+      "amount": 1,
+      "unitPrice": 60
+    },
+    {
+      "name": "中餐",
+      "category": "餐飲食品",
+      "amount": 1,
+      "unitPrice": 70
+    },
+    {
+      "name": "中餐",
+      "category": "餐飲食品",
+      "amount": 1,
+      "unitPrice": 65
+    },
+    {
+      "name": "晚餐",
+      "category": "餐飲食品",
+      "amount": 1,
+      "unitPrice": 70
+    },
+    {
+      "name": "早餐",
+      "category": "餐飲食品",
+      "amount": 1,
+      "unitPrice": 45
+    },
+    {
+      "name": "晚餐",
+      "category": "餐飲食品",
+      "amount": 10,
+      "unitPrice": 70
+    },
+    {
+      "name": "晚餐",
+      "category": "餐飲食品",
+      "amount": 1,
+      "unitPrice": 90
+    },
+    {
+      "name": "公車",
+      "category": "交通出行",
+      "amount": 1,
+      "unitPrice": 30
+    },
+    {
+      "name": "遊樂園",
+      "category": "休閒娛樂",
+      "amount": 1,
+      "unitPrice": 400
+    },
+    {
+      "name": "買冷氣",
+      "category": "家居物業",
+      "amount": 1,
+      "unitPrice": 20000
+    },
+    {
+      "name": "好友結婚禮金",
+      "category": "其他",
+      "amount": 2,
+      "unitPrice": 3000
+    }
+  ]
+}
