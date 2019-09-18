@@ -38,17 +38,6 @@ app.use('/', require('./routes/home'));
 
 
 
-
-// app.get('/', (req, res) => {
-//   // console.log('This is home page')
-//   // res.render('index')
-//   res.json({ "error": false, "message": "Hello !" });
-// })
-
-// app.post('/', (req, res) => {
-//   res.json({ "error": false, "message": "success", "data": req.body.num1 + req.body.num2 })
-// })
-
 // Server start
 app.listen(port, () => {
   console.log(`Express server start`)
