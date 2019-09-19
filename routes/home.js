@@ -6,12 +6,9 @@ const router = express.Router()
 
 
 router.get('/', function (req, res) {
-  res.json({ "error": false, "message": "Hello !" });
-});
+  res.send('This is home page')
+})
 
-router.post('/add', function (req, res) {
-  res.json({ "error": false, "message": "success", "data": req.body.num1 + req.body.num2 });
-});
 
 module.exports = router
 

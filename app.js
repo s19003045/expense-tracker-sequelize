@@ -36,6 +36,11 @@ db.once('open', () => {
 
 app.use('/', require('./routes/home'));
 
+app.use('/records', require('./routes/records'))
+
+app.use('/user', require('./routes/user'))
+
+// app.use('/auth', require('./routes/auth'))
 
 
 // Server start
