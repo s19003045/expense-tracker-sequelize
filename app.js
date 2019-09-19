@@ -6,10 +6,12 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/record', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
 const db = mongoose.connection
+const methodOverride = require('method-override')
 
 
 
-
+// override with POST having ?_method=DELETE
+app.use(methodOverride('_method'))
 
 // Set body-parser
 app.use(bodyParser.urlencoded({ extended: true }))

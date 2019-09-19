@@ -27,4 +27,12 @@ router.post('/login', function (req, res) {
   res.redirect('/')
 })
 
+// log out
+router.get('/logout', (req, res) => {
+  req.logout() //passport 提供的方法 req.logout() 會結束 login session，執行的動作有 remove the req.user property and clear the login session (if any).
+  req.flash('success_msg', '你已成功登出')
+  res.redirect('/users/login')
+})
+
+
 module.exports = router

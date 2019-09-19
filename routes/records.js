@@ -9,6 +9,11 @@ router.get('/', function (req, res) {
   res.redirect('/')
 })
 
+// 新增一筆 record
+router.post('/', function (req, res) {
+  res.redirect('/')
+})
+
 // 新增 record 頁面
 router.get('/new', function (req, res) {
   res.send('New record page')
@@ -22,13 +27,12 @@ router.get('/:id/edit', function (req, res) {
 })
 
 // 送出編輯 record
-router.post('/:id/edit', function (req, res) {
+router.put('/:id', function (req, res) {
   res.redirect('/')
 })
 
 // 刪除 record
-router.post('/:id/delete', function (req, res) {
-
+router.delete('/:id/delete', function (req, res) {
   res.redirect('/')
 })
 
