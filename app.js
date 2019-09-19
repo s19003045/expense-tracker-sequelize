@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/record', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
 const db = mongoose.connection
 const methodOverride = require('method-override')
-
+const handlebars = require('handlebars')
 
 
 // override with POST having ?_method=DELETE
@@ -34,7 +34,10 @@ db.once('open', () => {
   console.log('mongoose connect success')
 })
 
-
+// handlebars helper
+handlebars.registerHelper("ifEquals", function (v1, v2, options) {
+  return v1 === v2 ? options.fn(this) : options.inverse(this);
+})
 
 // ===============route setting=============
 

@@ -33,6 +33,9 @@ const recordSchema = new Schema({
   },
   updatedAt: {
     type: Date,
+  },
+  itemTotalPrice: {
+    type: Number,
   }
 })
 
@@ -49,6 +52,10 @@ recordSchema.pre('save', function (next) {
   if (!this.createdAt) {
     this.createdAt = now
   }
+
+  // 計算這項消費的總價
+  this.itemTotalPrice = this.unitPrice * this.amount
+  console.log(this.itemTotalPrice)
 
   // Call the next function in the pre-save chain
   next()

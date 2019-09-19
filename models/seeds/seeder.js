@@ -8,6 +8,7 @@ const db = mongoose.connection
 const calculate = require('../calculate.js')
 const calculateForRecords = new calculate()
 
+
 db.on('error', () => {
   console.log('connect to mongoDB error')
 })
@@ -25,6 +26,7 @@ db.once('open', () => {
   })
 
 
+
   // Record.find().sort({ name: 'asc', date: 'asc' }).then(records => {
   //   let totalPrice = calculateForRecords.totalPrice(records)
   //   let recordCount = calculateForRecords.recordCount(records)
@@ -32,6 +34,7 @@ db.once('open', () => {
 
   //   console.log('=====================')
   //   console.log(`總花費： ${totalPrice}  總筆數：${recordCount}  平均：${average}`)
+
   // })
 
 })
