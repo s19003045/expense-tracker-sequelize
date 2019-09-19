@@ -17,6 +17,9 @@ app.use(methodOverride('_method'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
+// static files
+app.use(express.static('public'))
+
 // Set up template engine 
 app.engine('handlebars', exphbs())
 app.set('view engine', 'handlebars')
