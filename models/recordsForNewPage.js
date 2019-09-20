@@ -17,6 +17,7 @@ const recordsForNewPage = {
     htmlInputType: 'text',
     hint: '必填欄位',
     fontAwesome: '',
+    inputId: '',
     defaultValue: ''
   },
   unitPrice: {
@@ -27,6 +28,7 @@ const recordsForNewPage = {
     htmlInputType: 'number',
     hint: '必填欄位',
     fontAwesome: '',
+    inputId: '',
     defaultValue: ''
   },
   amount: {
@@ -37,6 +39,7 @@ const recordsForNewPage = {
     htmlInputType: 'number',
     hint: '必填欄位',
     fontAwesome: '',
+    inputId: '',
     defaultValue: '1'
   },
   merchant: {
@@ -47,6 +50,7 @@ const recordsForNewPage = {
     htmlInputType: 'text',
     hint: '',
     fontAwesome: '',
+    inputId: '',
     defaultValue: ''
   },
   date: {
@@ -57,7 +61,9 @@ const recordsForNewPage = {
     htmlInputType: 'date',
     hint: '必填欄位',
     fontAwesome: '',
-    defaultValue: ''
+    inputId: 'datePicker',
+    defaultValue: Date.now()
+    // 預設為今天的日期，但似乎沒有用
   },
   description: {
     name: 'description',
@@ -67,7 +73,10 @@ const recordsForNewPage = {
     htmlInputType: 'text',
     hint: '',
     fontAwesome: '',
+    inputId: '',
     defaultValue: ''
   },
 }
+
+
 module.exports = recordsForNewPage

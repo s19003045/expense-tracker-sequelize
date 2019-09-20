@@ -14,22 +14,27 @@
             <label class="btn btn-warning">
               <i class="fas fa-home mr-2 fa-4x"></i>
               <input type="radio" name="category" id="option1" autocomplete="off" value="家居物業" required>
+              <small id="" class="">家居物業</small>
             </label>
             <label class="btn btn-warning">
               <i class="fas fa-shuttle-van mr-2 fa-4x"></i>
               <input type="radio" name="category" id="option1" autocomplete="off" value="交通出行" required>
+              <small id="" class="">交通出行</small>
             </label>
             <label class="btn btn-warning">
               <i class="fas fa-grin mr-2 fa-4x"></i>
               <input type="radio" name="category" id="option1" autocomplete="off" value="休閒娛樂" required>
+              <small id="" class="">休閒娛樂</small>
             </label>
             <label class="btn btn-warning">
               <i class="fas fa-utensils mr-2 fa-4x"></i>
               <input type="radio" name="category" id="option1" autocomplete="off" value="餐飲食品">
+              <small id="" class="">餐飲食品</small>
             </label>
             <label class="btn btn-warning">
               <i class="fas fa-pen mr-2 fa-4x"></i>
               <input type="radio" name="category" id="option1" autocomplete="off" value="其他" required>
+              <small id="" class="">其他</small>
             </label>
           </div>
         </div>
@@ -42,8 +47,8 @@
               {{this.tag}}
             </span></label>
           <div class="col-10 ml-auto">
-            <input type="{{this.htmlInputType}}" class="form-control" id="" placeholder="" name="{{@key}}"
-              value="{{this.defaultValue}}" {{#if this.required}}required{{/if}}>
+            <input type="{{this.htmlInputType}}" class="form-control" id="{{this.inputId}}" placeholder=""
+              name="{{@key}}" value="{{this.defaultValue}}" {{#if this.required}}required{{/if}}>
             <small id="" class="form-text text-muted">{{this.hint}}</small>
           </div>
         </div>
@@ -59,3 +64,12 @@
     </div>
   </div>
 </div>
+
+<script>
+  Date.prototype.toDateInputValue = function () {
+    var local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0, 10);
+  };
+  document.getElementById('datePicker').value = new Date().toDateInputValue();
+</script>
