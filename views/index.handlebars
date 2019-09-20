@@ -1,99 +1,67 @@
-<div class="row mb-5">
-  <div class="col-12 col-lg-8 mx-auto bg-light">
-    <div class="row px-5 d-flex py-3 bg-light">
+<div class="row mb-5 mt-2">
+  <div class="col-12 col-lg-8 mx-auto bg-light border px-5 py-3">
+    <form action="/records/search" method="GET" class="form-inline">
 
-      {{!-- 搜尋及新增列 --}}
-      {{!-- 左：類別 ；中：date picker ；右：新增(+)icon --}}
-      <form action="/records/search" method="GET" class="form-inline">
-
-        {{!-- 類別用 icon --}}
-        <div class="form-group row mb-2">
-          <div class="btn-group btn-group-toggle mt-2" data-toggle="buttons">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">類別：</span>
-            </div>
-            <label class="btn btn-warning {{#ifEquals '家居物業' category}}active{{/ifEquals}}">
-              <i class="fas fa-home mr-2 fa-2x"></i>
-              <input type="radio" name="category" id="option1" autocomplete="off" value="家居物業">
-              <small id="" class="">家居物業</small>
-            </label>
-            <label class="btn btn-warning {{#ifEquals '交通出行' category}}active{{/ifEquals}}">
-              <i class="fas fa-shuttle-van mr-2 fa-2x"></i>
-              <input type="radio" name="category" id="option1" autocomplete="off" value="交通出行">
-              <small id="" class="">交通出行</small>
-            </label>
-            <label class="btn btn-warning {{#ifEquals '休閒娛樂' category}}active{{/ifEquals}}">
-              <i class="fas fa-grin mr-2 fa-2x"></i>
-              <input type="radio" name="category" id="option1" autocomplete="off" value="休閒娛樂">
-              <small id="" class="">休閒娛樂</small>
-            </label>
-            <label class="btn btn-warning {{#ifEquals '餐飲食品' category}}active{{/ifEquals}}">
-              <i class="fas fa-utensils mr-2 fa-2x"></i>
-              <input type="radio" name="category" id="option1" autocomplete="off" value="餐飲食品">
-              <small id="" class="">餐飲食品</small>
-            </label>
-            <label class="btn btn-warning {{#ifEquals '其他' category}}active{{/ifEquals}}">
-              <i class="fas fa-pen mr-2 fa-2x"></i>
-              <input type="radio" name="category" id="option1" autocomplete="off" value="其他">
-              <small id="" class="">其他</small>
-            </label>
-          </div>
-        </div>
-
-        {{!-- <div class="input-group mb-3">
+      {{!-- 類別用 icon --}}
+      <div class="form-group row mb-2">
+        <div class="btn-group btn-group-toggle mt-2" data-toggle="buttons">
           <div class="input-group-prepend">
-            <button class="btn btn-outline-secondary" type="button">類別</button>
+            <span class="input-group-text" id="basic-addon1">類別：</span>
           </div>
-          <select class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon">
-            <option value="home" selected>全部</option>
-            <option value="home"><i class="fas fa-home mr-2"></i>家居物業</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-        </div> --}}
-
-
-        {{!-- <div class="form-group mb-2">
-       
-          <div class="dropdown mr-5">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              類別
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" name="category" href="#" value="家居物業">
-                <i class="fas fa-home mr-2"></i>家居物業
-              </a>
-              <a class="dropdown-item" name="category" href="#" value="交通出行">
-                <i class="fas fa-shuttle-van mr-2"></i>交通出行
-              </a>
-              <a class="dropdown-item" name="category" href="#" value="休閒娛樂">
-                <i class="fas fa-grin-beam mr-2"></i>休閒娛樂
-              </a>
-              <a class="dropdown-item" name="category" href="#" value="餐飲食品">
-                <i class="fas fa-utensils mr-2"></i>餐飲食品
-              </a>
-              <a class="dropdown-item" name="category" href="#" value="其他">
-                <i class="fas fa-pen mr-2"></i>其他
-              </a>
-            </div>
-          </div>
-        </div> --}}
-
-        {{!-- date range picker --}}
-        <div class="form-group mb-2 mr-2">
-          <label for="day-selected" class="col-form-label mr-2">日期:</label>
-          <input type="text" class="form-control" id="daterange" name="daterange"
-            value="{{#if daterange}}{{daterange}}{{/if}}">
+          <label class="btn btn-warning {{#ifEquals '家居物業' category}}active{{/ifEquals}}">
+            <i class="fas fa-home mr-2 fa-2x"></i>
+            <input type="radio" name="category" id="option1" autocomplete="off" value="家居物業">
+            <small id="" class="">家居物業</small>
+          </label>
+          <label class="btn btn-warning {{#ifEquals '交通出行' category}}active{{/ifEquals}}">
+            <i class="fas fa-shuttle-van mr-2 fa-2x"></i>
+            <input type="radio" name="category" id="option1" autocomplete="off" value="交通出行">
+            <small id="" class="">交通出行</small>
+          </label>
+          <label class="btn btn-warning {{#ifEquals '休閒娛樂' category}}active{{/ifEquals}}">
+            <i class="fas fa-grin mr-2 fa-2x"></i>
+            <input type="radio" name="category" id="option1" autocomplete="off" value="休閒娛樂">
+            <small id="" class="">休閒娛樂</small>
+          </label>
+          <label class="btn btn-warning {{#ifEquals '餐飲食品' category}}active{{/ifEquals}}">
+            <i class="fas fa-utensils mr-2 fa-2x"></i>
+            <input type="radio" name="category" id="option1" autocomplete="off" value="餐飲食品">
+            <small id="" class="">餐飲食品</small>
+          </label>
+          <label class="btn btn-warning {{#ifEquals '其他' category}}active{{/ifEquals}}">
+            <i class="fas fa-pen mr-2 fa-2x"></i>
+            <input type="radio" name="category" id="option1" autocomplete="off" value="其他">
+            <small id="" class="">其他</small>
+          </label>
         </div>
+      </div>
 
-        <button class="btn btn-outline-primary mb-2 mr-2" type="sumbit">Search</button>
-    </div>
+      {{!-- date range picker --}}
+      <div class="form-group row mb-2">
+        <div class="btn-group btn-group-toggle mt-2" data-toggle="buttons">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">日期：</span>
+          </div>
+
+          {{!-- <div class="form-group mb-2 mr-2">
+            <label for="day-selected" class="col-form-label mr-2">日期:</label> --}}
+          <label class="align-middle">
+            <input type="text" class="form-control" id="daterange" name="daterange"
+              value="{{#if daterange}}{{daterange}}{{/if}}">
+          </label>
+
+          <button class="btn btn-outline-primary mr-2" type="sumbit">Search</button>
+        </div>
+      </div>
     </form>
-    <hr class="py-0">
+  </div>
+</div>
+
+<div class="row mb-5">
+  <div class="col-12 col-lg-8 mx-auto bg-light border">
 
     {{!-- link to create-record page--}}
-    <div class="form-group ml-5 align-middle  ">
+    <div class="form-group ml-5 align-middle mt-3">
       <a class="btn rounded align-middle" id="add-record" href="/records/new">
         <i class="fas fa-plus-circle fa-3x"></i>
       </a>
@@ -103,19 +71,21 @@
     </div>
 
     {{!-- 支出總額 --}}
-    <div class="total-amount bg-warning py-2 mr-0 border">
+    <div class="total-amount bg-warning py-2 px-1 mr-0 border">
       <div class="input-group justify-content-center">
+        <h1 class="align-bottom">支出總額</h1>
         <label for="total-amount" class="mx-5">
-          <h1>TWD</h1>
+          <h1><span>TWD</span></h1>
         </label>
-        <h1 id="total-amount">${{totalAmount}}</h1>
+
+        <h1 id="total-amount" class="">${{totalAmount}}</h1>
       </div>
 
     </div>
-    <div class="row">
+    <div class="row" style="padding:0 15px;">
 
       {{!-- 列出該日所有的record --}}
-      <table class="table table-striped table-hover">
+      <table class="table table-striped table-hover border">
         <thead class="thead-dark">
           <tr>
             <th scope="col">Category</th>
@@ -161,40 +131,8 @@
             </td>
           </tr>
           {{/each}}
-
-
-          {{!-- <tr>
-            <td class="align-middle pl-4"><i class="fas fa-home fa-2x mr-2"></i></td>
-            <td class="align-middle">水電<br>
-              <small id="" class="text-muted">2019/9/9</small>
-            </td>
-            <td class="align-middle">$3000</td>
-            <td>
-              <form action="/records/1/delete?_method=DELETE" method="POST">
-                <a class="btn btn-info my-1" href="/records/1/edit">修改</a>
-                <button class="btn btn-secondary my-1" type="submit">刪除</button>
-              </form>
-            </td>
-          </tr>
-          <tr>
-            <td class="align-middle pl-4"><i class="fas fa-shuttle-van fa-2x mr-2"></i></td>
-            <td class="align-middle">火車<br>
-              <small id="" class="text-muted">2019/9/9</small>
-            </td>
-            <td class="align-middle">$3800</td>
-            <td>
-              <form action="/records/1/delete?_method=DELETE" method="POST">
-                <a class="btn btn-info my-1" href="/records/1/edit">修改</a>
-                <button class="btn btn-secondary my-1" type="submit">刪除</button>
-              </form>
-            </td>
-          </tr> --}}
-
-
         </tbody>
       </table>
     </div>
-
-
   </div>
 </div>
