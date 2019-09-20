@@ -2,6 +2,8 @@
   <div class="col-12 col-lg-8 mx-auto bg-light">
     <div class="row px-5 d-flex py-3 bg-light">
 
+      {{!-- 搜尋及新增列 --}}
+      {{!-- 左：類別 ；中：date picker ；右：新增(+)icon --}}
       <form action="/records" method="GET" class="form-inline">
         <div class="form-group mb-2">
           {{!-- dropdown: category --}}
@@ -56,8 +58,6 @@
       </div>
     </div>
     <div class="row">
-      {{!-- date picker --}}
-      {{!-- 左：日曆 icon ；中：date picker ；右：新增(+) icon --}}
 
       {{!-- 列出該日所有的record --}}
       <table class="table table-striped table-hover">
@@ -93,6 +93,8 @@
             </td>
             <td class="align-middle">{{this.name}}<br>
               <small id="" class="text-muted">{{this.date}}</small>
+              <br>
+              <small id="" class="text-muted">{{this.merchant}}</small>
             </td>
             <td class="align-middle">${{this.itemTotalPrice}}</td>
             <td>

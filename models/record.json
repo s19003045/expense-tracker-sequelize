@@ -4,73 +4,127 @@
       "name": "中餐",
       "category": "餐飲食品",
       "amount": 3,
-      "unitPrice": 50
+      "unitPrice": 50,
+      "merchant": "麥當勞"
     },
     {
       "name": "中餐",
       "category": "餐飲食品",
       "amount": 1,
-      "unitPrice": 60
+      "unitPrice": 60,
+      "merchant": "肯德基"
+    },
+    {
+      "name": "中餐",
+      "category": "餐飲食品",
+      "amount": 2,
+      "unitPrice": 70,
+      "merchant": "哇哇叫"
     },
     {
       "name": "中餐",
       "category": "餐飲食品",
       "amount": 1,
-      "unitPrice": 70
-    },
-    {
-      "name": "中餐",
-      "category": "餐飲食品",
-      "amount": 1,
-      "unitPrice": 65
+      "unitPrice": 65,
+      "merchant": "麥當勞"
     },
     {
       "name": "晚餐",
       "category": "餐飲食品",
       "amount": 1,
-      "unitPrice": 70
+      "unitPrice": 70,
+      "merchant": "麥當勞"
     },
     {
       "name": "早餐",
       "category": "餐飲食品",
       "amount": 1,
-      "unitPrice": 45
+      "unitPrice": 45,
+      "merchant": "肯德基"
     },
     {
       "name": "晚餐",
       "category": "餐飲食品",
       "amount": 10,
-      "unitPrice": 70
+      "unitPrice": 70,
+      "merchant": "香雞城"
     },
     {
       "name": "晚餐",
       "category": "餐飲食品",
       "amount": 1,
-      "unitPrice": 90
+      "unitPrice": 90,
+      "merchant": "香雞城"
     },
     {
       "name": "公車",
       "category": "交通出行",
       "amount": 1,
-      "unitPrice": 30
+      "unitPrice": 30,
+      "merchant": "三重客運"
+    },
+    {
+      "name": "捷運",
+      "category": "交通出行",
+      "amount": 1,
+      "unitPrice": 40,
+      "merchant": ""
+    },
+    {
+      "name": "火車",
+      "category": "交通出行",
+      "amount": 1,
+      "unitPrice": 180,
+      "merchant": "台鐵"
     },
     {
       "name": "遊樂園",
       "category": "休閒娛樂",
-      "amount": 1,
-      "unitPrice": 400
+      "amount": 5,
+      "unitPrice": 400,
+      "merchant": "九族文化城"
+    },
+    {
+      "name": "文化展覽",
+      "category": "休閒娛樂",
+      "amount": 3,
+      "unitPrice": 300,
+      "merchant": "文化工場"
     },
     {
       "name": "買冷氣",
       "category": "家居物業",
       "amount": 1,
-      "unitPrice": 20000
+      "unitPrice": 20000,
+      "merchant": "展將"
+    },
+    {
+      "name": "書櫃",
+      "category": "家居物業",
+      "amount": 2,
+      "unitPrice": 2000,
+      "merchant": "B&Q"
     },
     {
       "name": "好友結婚禮金",
       "category": "其他",
-      "amount": 2,
-      "unitPrice": 3000
+      "amount": 1,
+      "unitPrice": 3000,
+      "merchant": ""
+    },
+    {
+      "name": "看牙",
+      "category": "其他",
+      "amount": 1,
+      "unitPrice": 300,
+      "merchant": ""
+    },
+    {
+      "name": "修車",
+      "category": "其他",
+      "amount": 1,
+      "unitPrice": 1000,
+      "merchant": ""
     }
   ]
 }

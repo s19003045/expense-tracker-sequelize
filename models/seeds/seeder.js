@@ -21,7 +21,8 @@ db.once('open', () => {
       name: element.name,
       category: element.category,
       amount: element.amount,
-      unitPrice: element.unitPrice
+      unitPrice: element.unitPrice,
+      merchant: element.merchant
     })
   })
 

@@ -25,7 +25,8 @@ router.get('/', function (req, res) {
 
       // 將 Date 物件轉成 string，並取 'T' 前面的字串
       ele.dateToString = ele.date.toJSON().split('T')[0]
-      console.log(ele.dateToString)
+
+      // console.log(ele.dateToString)
       // recordsForView.push(ele)
     })
     // console.log(recordsForView)
