@@ -9,6 +9,9 @@ const record = new Record()
 const Calculate = require('../lib/calculate.js')
 const calculate = new Calculate()
 
+const Query = require('../lib/query.js')
+const query = new Query()
+
 const recordsForNewPage = require('../models/recordsForNewPage.js')
 
 // 列出所有 record
@@ -41,14 +44,17 @@ router.get('/new', function (req, res) {
 
 // 搜尋 record 頁面
 router.get('/search', function (req, res) {
-  console.log(req.query)
-  const string = req.query.date.split('-')
+  const { daterange, category } = req.query
 
+  let regexp = new RegExp('')
+  const queryCategory = req.query.category || regexp
+  Record.where('category', queryCategory).sort({ date: 'desc' }).then(recordSorted => {
+    const records = query.filterRecInrange(recordSorted, req.query.daterange)
 
+    const totalAmount = calculate.totalPrice(records)
+    res.render('index', { records, totalAmount, daterange, category })
+  })
 
-
-  res.send('this is search result')
-  // res.render('new', { recordsForNewPage })
 })
 
 // 編輯 record 頁面
