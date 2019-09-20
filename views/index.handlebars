@@ -4,9 +4,57 @@
 
       {{!-- 搜尋及新增列 --}}
       {{!-- 左：類別 ；中：date picker ；右：新增(+)icon --}}
-      <form action="/records" method="GET" class="form-inline">
-        <div class="form-group mb-2">
-          {{!-- dropdown: category --}}
+      <form action="/records/search" method="GET" class="form-inline">
+
+        {{!-- 類別用 icon --}}
+        <div class="form-group row mb-2">
+          <div class="btn-group btn-group-toggle mt-2" data-toggle="buttons">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">類別：</span>
+            </div>
+            <label class="btn btn-warning">
+              <i class="fas fa-home mr-2 fa-2x"></i>
+              <input type="radio" name="category" id="option1" autocomplete="off" value="家居物業">
+              <small id="" class="">家居物業</small>
+            </label>
+            <label class="btn btn-warning">
+              <i class="fas fa-shuttle-van mr-2 fa-2x"></i>
+              <input type="radio" name="category" id="option1" autocomplete="off" value="交通出行">
+              <small id="" class="">交通出行</small>
+            </label>
+            <label class="btn btn-warning">
+              <i class="fas fa-grin mr-2 fa-2x"></i>
+              <input type="radio" name="category" id="option1" autocomplete="off" value="休閒娛樂">
+              <small id="" class="">休閒娛樂</small>
+            </label>
+            <label class="btn btn-warning">
+              <i class="fas fa-utensils mr-2 fa-2x"></i>
+              <input type="radio" name="category" id="option1" autocomplete="off" value="餐飲食品">
+              <small id="" class="">餐飲食品</small>
+            </label>
+            <label class="btn btn-warning">
+              <i class="fas fa-pen mr-2 fa-2x"></i>
+              <input type="radio" name="category" id="option1" autocomplete="off" value="其他">
+              <small id="" class="">其他</small>
+            </label>
+          </div>
+        </div>
+
+        {{!-- <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <button class="btn btn-outline-secondary" type="button">類別</button>
+          </div>
+          <select class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+            <option value="home" selected>全部</option>
+            <option value="home"><i class="fas fa-home mr-2"></i>家居物業</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div> --}}
+
+
+        {{!-- <div class="form-group mb-2">
+       
           <div class="dropdown mr-5">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -30,32 +78,38 @@
               </a>
             </div>
           </div>
-        </div>
+        </div> --}}
 
-
-        {{!-- date picker --}}
+        {{!-- date range picker --}}
         <div class="form-group mb-2 mr-2">
-          <label for="day-selected" class="col-form-label mr-2">Select date:</label>
-          <input type="date" class="form-control" id="day-selected" name="day-selected" value="">
+          <label for="day-selected" class="col-form-label mr-2">日期:</label>
+          <input type="text" class="form-control" id="daterange" name="daterange" value="09/01/2019 - 12/31/2019">
         </div>
 
         <button class="btn btn-outline-primary mb-2 mr-2" type="sumbit">Search</button>
-
-        <div class="form-group ml-5 align-middle">
-          <a class="btn rounded" href="/records/new">
-            <i class="fas fa-plus-circle fa-3x"></i>
-          </a>
-        </div>
     </div>
     </form>
+    <hr class="py-0">
 
+    {{!-- link to create-record page--}}
+    <div class="form-group ml-5 align-middle  ">
+      <a class="btn rounded align-middle" id="add-record" href="/records/new">
+        <i class="fas fa-plus-circle fa-3x"></i>
+      </a>
+      <label for="add-record" class="ml-1 align-middle pt-2">
+        <h2>Add Record</h2>
+      </label>
+    </div>
+
+    {{!-- 支出總額 --}}
     <div class="total-amount bg-warning py-2 mr-0 border">
       <div class="input-group justify-content-center">
-        <label for="total-amount" class="mr-5">
+        <label for="total-amount" class="mx-5">
           <h1>TWD</h1>
         </label>
         <h1 id="total-amount">${{totalAmount}}</h1>
       </div>
+
     </div>
     <div class="row">
 

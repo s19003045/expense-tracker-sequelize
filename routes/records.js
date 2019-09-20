@@ -6,8 +6,8 @@ const router = express.Router()
 const Record = require('../models/record')
 const record = new Record()
 
-const calculate = require('../models/calculate.js')
-const calculateForRecords = new calculate()
+const Calculate = require('../lib/calculate.js')
+const calculate = new Calculate()
 
 const recordsForNewPage = require('../models/recordsForNewPage.js')
 
@@ -36,6 +36,19 @@ router.post('/', function (req, res) {
 // 新增 record 頁面
 router.get('/new', function (req, res) {
   res.render('new', { recordsForNewPage })
+})
+
+
+// 搜尋 record 頁面
+router.get('/search', function (req, res) {
+  console.log(req.query)
+  const string = req.query.date.split('-')
+
+
+
+
+  res.send('this is search result')
+  // res.render('new', { recordsForNewPage })
 })
 
 // 編輯 record 頁面

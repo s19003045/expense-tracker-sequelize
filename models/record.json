@@ -5,126 +5,168 @@
       "category": "餐飲食品",
       "amount": 3,
       "unitPrice": 50,
-      "merchant": "麥當勞"
+      "merchant": "麥當勞",
+      "date": "05/20/2018"
+    },
+    {
+      "name": "中餐",
+      "category": "餐飲食品",
+      "amount": 3,
+      "unitPrice": 50,
+      "merchant": "麥當勞",
+      "date": "06/20/2018"
+    },
+    {
+      "name": "中餐",
+      "category": "餐飲食品",
+      "amount": 3,
+      "unitPrice": 50,
+      "merchant": "麥當勞",
+      "date": "07/20/2018"
+    },
+    {
+      "name": "中餐",
+      "category": "餐飲食品",
+      "amount": 3,
+      "unitPrice": 50,
+      "merchant": "麥當勞",
+      "date": "08/20/2018"
     },
     {
       "name": "中餐",
       "category": "餐飲食品",
       "amount": 1,
       "unitPrice": 60,
-      "merchant": "肯德基"
+      "merchant": "肯德基",
+      "date": "08/25/2019"
     },
     {
       "name": "中餐",
       "category": "餐飲食品",
       "amount": 2,
       "unitPrice": 70,
-      "merchant": "哇哇叫"
+      "merchant": "哇哇叫",
+      "date": "09/01/2019"
     },
     {
       "name": "中餐",
       "category": "餐飲食品",
       "amount": 1,
       "unitPrice": 65,
-      "merchant": "麥當勞"
+      "merchant": "麥當勞",
+      "date": "09/10/2019"
     },
     {
       "name": "晚餐",
       "category": "餐飲食品",
       "amount": 1,
       "unitPrice": 70,
-      "merchant": "麥當勞"
+      "merchant": "麥當勞",
+      "date": "09/25/2019"
     },
     {
       "name": "早餐",
       "category": "餐飲食品",
       "amount": 1,
       "unitPrice": 45,
-      "merchant": "肯德基"
+      "merchant": "肯德基",
+      "date": "10/10/2019"
     },
     {
       "name": "晚餐",
       "category": "餐飲食品",
       "amount": 10,
       "unitPrice": 70,
-      "merchant": "香雞城"
+      "merchant": "香雞城",
+      "date": "10/30/2019"
     },
     {
       "name": "晚餐",
       "category": "餐飲食品",
       "amount": 1,
       "unitPrice": 90,
-      "merchant": "香雞城"
+      "merchant": "香雞城",
+      "date": "11/10/2019"
     },
     {
       "name": "公車",
       "category": "交通出行",
       "amount": 1,
       "unitPrice": 30,
-      "merchant": "三重客運"
+      "merchant": "三重客運",
+      "date": "01/10/2019"
     },
     {
       "name": "捷運",
       "category": "交通出行",
       "amount": 1,
       "unitPrice": 40,
-      "merchant": ""
+      "merchant": "",
+      "date": "02/10/2019"
     },
     {
       "name": "火車",
       "category": "交通出行",
       "amount": 1,
       "unitPrice": 180,
-      "merchant": "台鐵"
+      "merchant": "台鐵",
+      "date": "04/10/2018"
     },
     {
       "name": "遊樂園",
       "category": "休閒娛樂",
       "amount": 5,
       "unitPrice": 400,
-      "merchant": "九族文化城"
+      "merchant": "九族文化城",
+      "date": "10/10/2018"
     },
     {
       "name": "文化展覽",
       "category": "休閒娛樂",
       "amount": 3,
       "unitPrice": 300,
-      "merchant": "文化工場"
+      "merchant": "文化工場",
+      "date": "07/10/2018"
     },
     {
       "name": "買冷氣",
       "category": "家居物業",
       "amount": 1,
       "unitPrice": 20000,
-      "merchant": "展將"
+      "merchant": "展將",
+      "date": "07/10/2019"
     },
     {
       "name": "書櫃",
       "category": "家居物業",
       "amount": 2,
       "unitPrice": 2000,
-      "merchant": "B&Q"
+      "merchant": "B&Q",
+      "date": "05/10/2019"
     },
     {
       "name": "好友結婚禮金",
       "category": "其他",
       "amount": 1,
       "unitPrice": 3000,
-      "merchant": ""
+      "merchant": "",
+      "date": "04/10/2019"
     },
     {
       "name": "看牙",
       "category": "其他",
       "amount": 1,
       "unitPrice": 300,
-      "merchant": ""
+      "merchant": "",
+      "date": "03/10/2019"
     },
     {
       "name": "修車",
       "category": "其他",
       "amount": 1,
       "unitPrice": 1000,
-      "merchant": ""
+      "merchant": "",
+      "date": "01/10/2019"
     }
   ]
 }
