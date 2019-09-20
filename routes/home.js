@@ -31,8 +31,6 @@ router.get('/', function (req, res) {
     // console.log(recordsForView)
     res.render('index', { records, totalAmount })
   })
-
-
 })
 
 

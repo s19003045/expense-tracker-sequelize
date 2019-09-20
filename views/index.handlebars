@@ -96,8 +96,8 @@
             </td>
             <td class="align-middle">${{this.itemTotalPrice}}</td>
             <td>
-              <form action="/records/1/delete?_method=DELETE" method="POST">
-                <a class="btn btn-info my-1" href="/records/1/edit">修改</a>
+              <form action="/records/{{this._id}}/delete?_method=DELETE" method="POST">
+                <a class="btn btn-info my-1" href="/records/{{this._id}}/edit">修改</a>
                 <button class="btn btn-secondary my-1" type="submit">刪除</button>
               </form>
             </td>
