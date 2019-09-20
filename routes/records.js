@@ -48,8 +48,24 @@ router.get('/:id/edit', function (req, res) {
 })
 
 // 送出編輯 record
-router.put('/:id', function (req, res) {
-  res.redirect('/')
+router.put('/:id/edit', function (req, res) {
+  const { category, name, unitPrice, amount, merchant, date, description } = req.body
+
+  Record.findOne({ _id: req.params.id }, (err, record) => {
+    if (err) return console.error(err)
+    record.name = name
+    record.category = category
+    record.unitPrice = unitPrice
+    record.amount = amount
+    record.merchant = merchant
+    record.date = date
+    record.description = description
+
+    record.save(err => {
+      if (err) return console.error(err)
+      res.redirect('/')
+    })
+  })
 })
 
 // 刪除 record

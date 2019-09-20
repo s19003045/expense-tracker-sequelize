@@ -3,7 +3,7 @@
     <div class="col-12 col-lg-6 mx-auto">
 
       {{!-- restaurant input --}}
-      <form action="/records" method="POST" class="form">
+      <form action="/records/{{{record.id}}}/edit?_method=PUT" method="POST" class="form">
 
         {{!-- 類別用 icon --}}
         <div class="form-group row">
