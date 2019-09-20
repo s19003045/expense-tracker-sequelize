@@ -9,6 +9,8 @@ const record = new Record()
 const calculate = require('../models/calculate.js')
 const calculateForRecords = new calculate()
 
+const recordsForNewPage = require('../models/recordsForNewPage.js')
+
 // 列出所有 record
 router.get('/', function (req, res) {
   res.redirect('/')
@@ -16,19 +18,29 @@ router.get('/', function (req, res) {
 
 // 新增一筆 record
 router.post('/', function (req, res) {
-  res.redirect('/')
+  const { category, name, unitPrice, amount, merchant, date, description } = req.body
+
+  Record.create({
+    name: name,
+    category: category,
+    unitPrice: unitPrice,
+    amount: amount,
+    merchant: merchant,
+    date: date,
+    description: description
+  })
+
+  res.render('new')
 })
 
 // 新增 record 頁面
 router.get('/new', function (req, res) {
-  res.send('New record page')
-  // res.redirect('/')
+  res.render('new', { recordsForNewPage })
 })
 
 // 編輯 record 頁面
 router.get('/:id/edit', function (req, res) {
-  res.send('Edit page')
-  // res.redirect('/')
+  res.render('edit')
 })
 
 // 送出編輯 record

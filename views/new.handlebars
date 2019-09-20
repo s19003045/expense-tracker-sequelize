@@ -1,0 +1,61 @@
+<div class="container mt-5">
+  <div class="row mb-5">
+    <div class="col-12 col-lg-6 mx-auto">
+
+      {{!-- restaurant input --}}
+      <form action="/records" method="POST" class="form">
+
+        {{!-- 類別用 icon --}}
+        <div class="form-group row">
+          <div class="btn-group btn-group-toggle mt-2" data-toggle="buttons">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">類別：</span>
+            </div>
+            <label class="btn btn-warning">
+              <i class="fas fa-home mr-2 fa-4x"></i>
+              <input type="radio" name="category" id="option1" autocomplete="off" value="家居物業" required>
+            </label>
+            <label class="btn btn-warning">
+              <i class="fas fa-shuttle-van mr-2 fa-4x"></i>
+              <input type="radio" name="category" id="option1" autocomplete="off" value="交通出行" required>
+            </label>
+            <label class="btn btn-warning">
+              <i class="fas fa-grin mr-2 fa-4x"></i>
+              <input type="radio" name="category" id="option1" autocomplete="off" value="休閒娛樂" required>
+            </label>
+            <label class="btn btn-warning">
+              <i class="fas fa-utensils mr-2 fa-4x"></i>
+              <input type="radio" name="category" id="option1" autocomplete="off" value="餐飲食品">
+            </label>
+            <label class="btn btn-warning">
+              <i class="fas fa-pen mr-2 fa-4x"></i>
+              <input type="radio" name="category" id="option1" autocomplete="off" value="其他" required>
+            </label>
+          </div>
+        </div>
+
+        {{!-- 其他 input 用物件迭代 --}}
+        {{#each recordsForNewPage}}
+        <div class="form-group row">
+          <label for="{{@key}}">{{this.title}}：
+            <span class="input-required">
+              {{this.tag}}
+            </span></label>
+          <div class="col-10 ml-auto">
+            <input type="{{this.htmlInputType}}" class="form-control" id="" placeholder="" name="{{@key}}"
+              value="{{this.defaultValue}}" {{#if this.required}}required{{/if}}>
+            <small id="" class="form-text text-muted">{{this.hint}}</small>
+          </div>
+        </div>
+        {{/each}}
+
+
+        {{!-- button for save and cancel --}}
+        <div class="button-group">
+          <button type="submit" class="btn btn-info px-5 mr-4">Save</button>
+          <a class="btn btn-dark" href="/" role="button">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
