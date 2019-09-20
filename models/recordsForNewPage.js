@@ -58,11 +58,11 @@ const recordsForNewPage = {
     title: '日期',
     required: true,
     tag: '*',
-    htmlInputType: 'date',
+    htmlInputType: 'text',
     hint: '必填欄位',
     fontAwesome: '',
-    inputId: 'datePicker',
-    defaultValue: Date.now()
+    inputId: 'datepicker',
+    // defaultValue: Date.now()
     // 預設為今天的日期，但似乎沒有用
   },
   description: {
@@ -78,5 +78,5 @@ const recordsForNewPage = {
   },
 }
 
-
+// exports
 module.exports = recordsForNewPage

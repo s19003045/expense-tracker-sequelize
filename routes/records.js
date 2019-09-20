@@ -30,7 +30,7 @@ router.post('/', function (req, res) {
     description: description
   })
 
-  res.render('new')
+  res.redirect('/')
 })
 
 // 新增 record 頁面
@@ -40,7 +40,11 @@ router.get('/new', function (req, res) {
 
 // 編輯 record 頁面
 router.get('/:id/edit', function (req, res) {
-  res.render('edit')
+  Record.findOne({ _id: req.params.id }, (err, record) => {
+    // console.log(typeof (record.date.toJSON()))
+    res.render('edit', { recordsForNewPage, record })
+  })
+
 })
 
 // 送出編輯 record

@@ -27,8 +27,8 @@ const recordSchema = new Schema({
     // required: true
   },
   date: {
-    type: Date,
-    default: Date.now
+    type: String,
+    // default: Date.now
   },
   userId: {
     type: Schema.Types.ObjectId,

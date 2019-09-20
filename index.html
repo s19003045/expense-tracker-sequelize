@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -17,6 +17,33 @@
       document.getElementById(
         "datePicker"
       ).value = new Date().toDateInputValue();
+    </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>jQuery UI Datepicker - Default functionality</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./public/css/bootstrap.css" />
+    <link rel="stylesheet" href="./public/css/style.css" />
+  </head>
+
+  <body>
+    <p>Date: <input type="text" id="datepicker" /></p>
+
+    <script src="./public/js/jquery-3.4.1.min.js"></script>
+    <script src="./public/js/popper.min.js"></script>
+    <script src="./public/js/bootstrap.js"></script>
+    <script>
+      document.querySelector("#datepicker").datepicker();
+      // $("#datepicker").datepicker();
     </script>
   </body>
 </html>
