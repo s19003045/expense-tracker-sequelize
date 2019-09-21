@@ -1,9 +1,9 @@
 <div class="row mb-5 mt-2">
-  <div class="col-12 col-lg-8 mx-auto bg-light border px-5 py-3">
+  <div class="col-12 col-lg-8 mx-auto bg-light border py-3" id="search-bar">
     <form action="/records/search" method="GET" class="form-inline">
 
       {{!-- 類別用 icon --}}
-      <div class="form-group row mb-2">
+      <div class="form-group row mb-2 mx-0">
         <div class="btn-group btn-group-toggle mt-2" data-toggle="buttons">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">類別：</span>
@@ -37,13 +37,13 @@
       </div>
 
       {{!-- date range picker --}}
-      <div class="form-group row mb-2">
+      <div class="form-group row mb-2  mx-0">
         <div class="btn-group mt-2">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">日期：</span>
           </div>
 
-          <div id="" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+          <div id="" style="background: #fff; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
             <i class="fa fa-calendar"></i>&nbsp;
             <input type="text" class="form-control" id="daterange" name="daterange"
               value="{{#if daterange}}{{daterange}}{{/if}}">
@@ -63,7 +63,7 @@
   <div class="col-12 col-lg-8 mx-auto bg-light border">
 
     {{!-- link to create-record page--}}
-    <div class="form-group ml-5 align-middle mt-3">
+    <div class="form-group ml-5 align-middle mt-3" id="add-record">
       <a class="btn rounded align-middle" id="add-record" href="/records/new">
         <i class="fas fa-plus-circle fa-3x"></i>
       </a>
