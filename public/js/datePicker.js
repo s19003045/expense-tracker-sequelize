@@ -1,11 +1,11 @@
 
 // datepicker for dd-mm-yyyy
 $(document).ready(function () {
-  // $('#datepicker').datepicker()
-  $('#datepickerForMonth').datepicker({
-    format: 'yyyy/mm/dd',
-    startDate: '-3d'
-  })
+  $('#datepicker').datepicker()
+  // $('#datepicker').datepicker({
+  //   format: 'yyyy/mm/dd',
+  //   startDate: '-3d'
+  // })
 })
 
 

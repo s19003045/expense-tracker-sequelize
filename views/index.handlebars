@@ -38,19 +38,20 @@
 
       {{!-- date range picker --}}
       <div class="form-group row mb-2">
-        <div class="btn-group btn-group-toggle mt-2" data-toggle="buttons">
+        <div class="btn-group mt-2">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">日期：</span>
           </div>
 
-          {{!-- <div class="form-group mb-2 mr-2">
-            <label for="day-selected" class="col-form-label mr-2">日期:</label> --}}
-          <label class="align-middle">
-            <input type="text" class="form-control" id="daterange" name="daterange"
-              value="{{#if daterange}}{{daterange}}{{/if}}">
-          </label>
+          <div class="form-group mb-2 mr-2">
+            <label class="align-middle">
+              <input type="text" class="form-control" id="daterange" name="daterange"
+                value="{{#if daterange}}{{daterange}}{{/if}}">
+            </label>
 
-          <button class="btn btn-outline-primary mr-2" type="sumbit">Search</button>
+            <button class="btn btn-outline-primary mr-2" type="sumbit">Search
+            </button>
+          </div>
         </div>
       </div>
     </form>

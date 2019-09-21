@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Record = require('../record')
 const records = require('../record.json')
 
-mongoose.connect('mongodb://localhost/record', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/record', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
 const db = mongoose.connection
 
 

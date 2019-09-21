@@ -5,7 +5,7 @@
       {{!-- restaurant input --}}
       <form action="/records/{{{record.id}}}/edit?_method=PUT" method="POST" class="form">
 
-        {{!-- 類別用 icon --}}
+        {{!-- 類別選單--}}
         <div class="form-group row">
           <div class="btn-group btn-group-toggle mt-2" data-toggle="buttons">
             <div class="input-group-prepend">
@@ -44,10 +44,7 @@
           </div>
         </div>
 
-        {{!-- 其他 input 用物件迭代 --}}
-        {{!-- {{#each recordsForNewPage}} --}}
-
-
+        {{!-- 輸入欄位 --}}
         <div class="form-group row">
           <label for="name">支出品項：
             <span class="input-required">
@@ -93,10 +90,13 @@
           <label for="date">日期：
             <span class="input-required">
               {{#if record.date.required}}*{{/if}}
-            </span></label>
+            </span>
+          </label>
           <div class="col-10 ml-auto">
             <input type="text" class="form-control" id="datepicker" placeholder="" name="date" value="{{record.date}}">
-            <small id="" class="form-text text-muted">{{#if record.date.required}}必填欄位{{/if}}</small>
+            <small id="" class="form-text text-muted">
+              {{#if record.date.required}}必填欄位{{/if}}
+            </small>
           </div>
         </div>
         <div class="form-group row">
@@ -112,7 +112,6 @@
         </div>
 
 
-        {{!-- {{/each}} --}}
 
 
         {{!-- button for save and cancel --}}

@@ -52,7 +52,7 @@ app.use('/user', require('./routes/user'))
 
 
 // Server start
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`Express server start`)
 })
 

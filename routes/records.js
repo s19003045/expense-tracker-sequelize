@@ -45,7 +45,7 @@ router.get('/new', function (req, res) {
 // 搜尋 record 頁面
 router.get('/search', function (req, res) {
   const { daterange, category } = req.query
-
+  console.log(req.query)
   let regexp = new RegExp('')
   const queryCategory = req.query.category || regexp
   Record.where('category', queryCategory).sort({ date: 'desc' }).then(recordSorted => {
