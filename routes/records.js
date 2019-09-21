@@ -48,11 +48,28 @@ router.get('/search', function (req, res) {
   console.log(req.query)
   let regexp = new RegExp('')
   const queryCategory = req.query.category || regexp
-  Record.where('category', queryCategory).sort({ date: 'desc' }).then(recordSorted => {
-    const records = query.filterRecInrange(recordSorted, req.query.daterange)
 
-    const totalAmount = calculate.totalPrice(records)
-    res.render('index', { records, totalAmount, daterange, category })
+  // 先以 category 來filter，再依 daterange 來 filter
+  Record.where('category', queryCategory).sort({ date: 'desc' }).then(recordSorted => {
+
+    if (daterange === '') {
+      // 不用再篩選
+      const records = recordSorted
+
+      // 計算總支出
+      const totalAmount = calculate.totalPrice(records)
+      // render 至 index ，放入四個物件作渲染畫面用
+      res.render('index', { records, totalAmount, daterange, category })
+    } else {
+      // 依 daterange 篩選
+      const records = query.filterRecInrange(recordSorted, req.query.daterange)
+
+      // 計算總支出
+      const totalAmount = calculate.totalPrice(records)
+      // render 至 index ，放入四個物件作渲染畫面用
+      res.render('index', { records, totalAmount, daterange, category })
+    }
+
   })
 
 })
