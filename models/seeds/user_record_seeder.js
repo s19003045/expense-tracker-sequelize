@@ -5,8 +5,9 @@ const Record = require('../record.js')
 const User = require('../user.js')
 
 const bcrypt = require('bcryptjs')
+
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/record', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost:27017/record', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
 const db = mongoose.connection
 
 db.on('err', (err) => {
@@ -21,7 +22,7 @@ db.once('open', () => {
     console.log('hello')
     users.forEach((user, index) => {
       console.log(user)
-      const records = recordList.slice((index * 1), (index * 1 + 1))
+      const records = recordList.slice((index * 10), (index * 10 + 9))
       records.forEach(record => {
         console.log(record)
         Record.create({

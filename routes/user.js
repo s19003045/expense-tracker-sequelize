@@ -7,17 +7,62 @@ const Record = require('../models/record.js')
 const User = require('../models/user.js')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
+const userObj = require('../models/userObj')
 
 // GET 註冊頁面
 router.get('/register', function (req, res) {
 
-  res.render('register')
+  res.render('register', { userObj })
 });
 
 // POST 註冊
 router.post('/register', function (req, res) {
-  // res.send('Edit page')
-  res.redirect('/')
+  const { name, email, password, password2 } = req.body
+
+  // 回傳的錯誤訊息儲存至 errors
+  let errors = []
+
+  // 寫入資料庫前的驗證，所有字串不能有空白
+  if (name.match(/\x20/i) || email.match(/\x20/i) || password.match(/\x20/i) || password2.match(/\x20/i)) {
+    errors.push({ message: '不得有空格' })
+  }
+  // 所有欄位不得為空
+  if (!name || !email || !password || !password2) {
+    errors.push({ message: '所有欄位都是必填' })
+  }
+
+  if (password !== password2) {
+    errors.push({ message: '密碼輸入錯誤' })
+  }
+  if (errors.length > 0) {
+    res.render('register', { errors, name, email, password, password2 })
+  } else {
+    User.findOne({ email: email }).then(user => {
+      if (user) {
+        console.log('User already exists')
+        errors.push({ message: '已有人註冊此 email' })
+        res.render('register', {
+          errors, name, email, password, password2
+        })
+
+      } else {
+        const newUser = new User({ name: name, email: email, password: password })
+        bcrypt.genSalt(10, (err, salt) => {
+          bcrypt.hash(newUser.password, salt, (err, hash) => {
+            if (err) throw err
+            newUser.password = hash
+            newUser.save()
+              .then(user => {
+                req.flash('success_msg', '你已成功註冊')
+                console.log(req.flash.success_msg)
+                res.redirect('/user/login')
+              })
+              .catch(err => console.log(err))
+          })
+        })
+      }
+    })
+  }
 })
 
 // GET 登入頁面
@@ -28,20 +73,15 @@ router.get('/login', function (req, res) {
 
 // POST 登入
 router.post('/login', function (req, res, next) {
-  // 使用 passport 認證使用者資料(或稱驗證請求)，使用的 strategy 是 以 passport-local(套件)建立的 LocalStrategy 
-  // 如果 authentication 失敗，passport 會回傳 401 Unauthorized Status
-  // 如果 authentication 成功，則後面的 handler 會執行 & req.user property 會被建立
-
-
-  // passport.authenticate('local', { failureFlash: 'Invalid username or password.' });
+  // 使用 passport-local 來驗證使用者登入
   passport.authenticate('local', {
     successRedirect: '/', // 登入成功會回到根目錄
     failureRedirect: '/user/login', // 失敗會留在登入頁面
-    // failureMessage: true,
+    failureMessage: true,
     failureFlash: true,
-    // successMessage: true,
-    // successFlash: true
-    // badRequestMessage: '您沒有輸入帳號或密碼',
+    successMessage: true,
+    successFlash: true,
+    badRequestMessage: '您沒有輸入帳號或密碼',
   })(req, res, next)
 })
 

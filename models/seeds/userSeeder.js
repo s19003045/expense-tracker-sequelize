@@ -1,6 +1,7 @@
 // import mongoose and set up connection to mongoDB
 const mongoose = require('mongoose')
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/record', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+
+mongoose.connect('mongodb://localhost:27017/record', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
 const db = mongoose.connection
 
 // User model

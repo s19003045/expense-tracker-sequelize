@@ -9,7 +9,8 @@ const userSchema = new Schema({
   name: {
     type: String,
     required: [true, "can't be blank"],
-    match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
+    // 允許中文字、英文字、數字及 _
+    match: [/^[\u4e00-\u9fa5_a-zA-Z0-9]+$/, 'invalid'],
     index: true
   },
   email: {

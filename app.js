@@ -1,5 +1,11 @@
 const express = require('express')
 const app = express()
+
+// 判別開發環境
+if (process.env.NODE_ENV !== 'production') {      // 如果不是 production 模式
+  require('dotenv').config()                      // 使用 dotenv 讀取 .env 檔案
+}
+
 const port = 3000
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
@@ -68,6 +74,10 @@ app.use((req, res, next) => {
   // res.locals 的變數可使用在 routes、渲染 view
   res.locals.user = req.user
   res.locals.isAuthenticated = req.isAuthenticated()
+
+  // 可用在使用者註冊/登入/登出時，儲存 success_msg 及 failure_msg
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.failure_msg = req.flash('failure_msg')
 
   next()
 })
