@@ -9,6 +9,22 @@ const db = mongoose.connection
 const methodOverride = require('method-override')
 const handlebars = require('handlebars')
 
+// import passport
+const passport = require('passport')
+// import express-session
+const session = require('express-session')
+// import connect-flash
+const flash = require('connect-flash')
+
+// 使用"連續"監聽器：listen to error
+db.on('error', () => {
+  console.log('mongoose connect error')
+})
+
+// 使用"一次性"監聽器：listen to success
+db.once('open', () => {
+  console.log('mongoose connect success')
+})
 
 // override with POST having ?_method=DELETE
 app.use(methodOverride('_method'))
@@ -24,15 +40,34 @@ app.use(express.static('public'))
 app.engine('handlebars', exphbs())
 app.set('view engine', 'handlebars')
 
-// 使用"連續"監聽器：listen to error
-db.on('error', () => {
-  console.log('mongoose connect error')
+// set session
+// ※注意：app.use(session({})) 必須設定在 app.use(passport.session()) 之前
+app.use(session({
+  secret: 'hello world', //用來簽章 sessionID 的cookie, 可以是一secret字串或是多個secret組成的一個陣列
+  resave: false,
+  saveUninitialized: true,
+}))
+
+// 建立 flash 實例並使用它
+app.use(flash())
+
+// passport initialize
+app.use(passport.initialize())
+
+// 如果應用程式使用 passport 來驗證使用者，並且會持續用到 login session，則必須使用 passport.session() 這個 middleware
+app.use(passport.session())
+
+// 載入 config 中的 passport.js
+// 把上面宣告的 passport 實例當成下面的參數
+require('./config/passport')(passport)
+
+// 登入後可以取得使用者的資訊方便我們在 view 裡面直接使用
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  next()
 })
 
-// 使用"一次性"監聽器：listen to success
-db.once('open', () => {
-  console.log('mongoose connect success')
-})
+
 
 // handlebars helper
 handlebars.registerHelper("ifEquals", function (v1, v2, options) {
