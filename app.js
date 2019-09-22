@@ -63,7 +63,12 @@ require('./config/passport')(passport)
 
 // 登入後可以取得使用者的資訊方便我們在 view 裡面直接使用
 app.use((req, res, next) => {
+
+  // 將驗證成功之後產生的 req.user 及 .isAuthenticated 存進 res.locals。
+  // res.locals 的變數可使用在 routes、渲染 view
   res.locals.user = req.user
+  res.locals.isAuthenticated = req.isAuthenticated()
+
   next()
 })
 

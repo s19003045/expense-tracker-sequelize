@@ -3,6 +3,8 @@ const express = require('express')
 // 建立一個 router 物件
 const router = express.Router()
 
+const { authenticated } = require('../config/auth')
+
 const Record = require('../models/record')
 const record = new Record()
 
@@ -15,12 +17,12 @@ const query = new Query()
 const recordsForNewPage = require('../models/recordsForNewPage.js')
 
 // 列出所有 record
-router.get('/', function (req, res) {
+router.get('/', authenticated, function (req, res) {
   res.redirect('/')
 })
 
 // 新增一筆 record
-router.post('/', function (req, res) {
+router.post('/', authenticated, function (req, res) {
   const { category, name, unitPrice, amount, merchant, date, description } = req.body
 
   Record.create({
@@ -30,27 +32,28 @@ router.post('/', function (req, res) {
     amount: amount,
     merchant: merchant,
     date: date,
-    description: description
+    description: description,
+    userId: req.user._id
   })
 
   res.redirect('/')
 })
 
 // 新增 record 頁面
-router.get('/new', function (req, res) {
+router.get('/new', authenticated, function (req, res) {
   res.render('new', { recordsForNewPage })
 })
 
 
 // 搜尋 record 頁面
-router.get('/search', function (req, res) {
+router.get('/search', authenticated, function (req, res) {
   const { daterange, category } = req.query
   console.log(req.query)
   let regexp = new RegExp('')
   const queryCategory = req.query.category || regexp
 
   // 先以 category 來filter，再依 daterange 來 filter
-  Record.where('category', queryCategory).sort({ date: 'desc' }).then(recordSorted => {
+  Record.find({ userId: req.user._id }).where('category', queryCategory).sort({ date: 'desc' }).then(recordSorted => {
 
     if (daterange === '') {
       // 不用再篩選
@@ -75,7 +78,7 @@ router.get('/search', function (req, res) {
 })
 
 // 編輯 record 頁面
-router.get('/:id/edit', function (req, res) {
+router.get('/:id/edit', authenticated, function (req, res) {
   Record.findOne({ _id: req.params.id }, (err, record) => {
     // console.log(typeof (record.date.toJSON()))
     res.render('edit', { recordsForNewPage, record })
@@ -84,7 +87,7 @@ router.get('/:id/edit', function (req, res) {
 })
 
 // 送出編輯 record
-router.put('/:id/edit', function (req, res) {
+router.put('/:id/edit', authenticated, function (req, res) {
   const { category, name, unitPrice, amount, merchant, date, description } = req.body
 
   Record.findOne({ _id: req.params.id }, (err, record) => {
@@ -105,7 +108,7 @@ router.put('/:id/edit', function (req, res) {
 })
 
 // 刪除 record
-router.delete('/:id/delete', function (req, res) {
+router.delete('/:id/delete', authenticated, function (req, res) {
   console.log(req.params.id)
   Record.findOne({ _id: req.params.id }, (err, record) => {
     if (err) return console.error(err)
