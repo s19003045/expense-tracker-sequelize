@@ -15,6 +15,7 @@
 ## 特色
 
 - MVC model & RESTful
+- RWD
 
 ## 網站功能
 
@@ -110,6 +111,20 @@ connect-flash、dotenv
   `connect to mongoDB successifully !`
 - 啟動瀏灠器：
   網址：http://localhost:3000
+
+## 畫面(手機)
+
+- 瀏灠所有帳本記錄
+  ![首頁..瀏灠所有帳本記錄](https://github.com/s19003045/expense-tracker/blob/master/imagesForGithub/mobile/index_mobile.jpeg)
+  
+- 新增帳本記錄
+  ![新增帳本記錄](https://github.com/s19003045/expense-tracker/blob/master/imagesForGithub/mobile/new_mobile.jpeg)
+  
+- 搜尋帳本記錄功能：依類別及日期區間篩選
+  ![搜尋帳本記錄](https://github.com/s19003045/expense-tracker/blob/master/imagesForGithub/mobile/search_mobile.jpeg)
+  
+- 搜尋帳本記錄結果
+  ![搜尋帳本記錄](https://github.com/s19003045/expense-tracker/blob/master/imagesForGithub/mobile/searchResult_mobile.jpeg)
 
 ## 畫面
 
