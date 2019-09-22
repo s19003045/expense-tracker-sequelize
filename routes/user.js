@@ -5,8 +5,8 @@ const router = express.Router()
 
 // GET 註冊頁面
 router.get('/register', function (req, res) {
-  res.send('Register page')
-  // res.redirect('/')
+
+  res.render('register')
 });
 
 // POST 註冊
@@ -17,8 +17,7 @@ router.post('/register', function (req, res) {
 
 // GET 登入頁面
 router.get('/login', function (req, res) {
-  // res.send('Login page')
-  // res.redirect('/')
+
   res.render('login')
 })
 
