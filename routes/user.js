@@ -17,8 +17,9 @@ router.post('/register', function (req, res) {
 
 // GET 登入頁面
 router.get('/login', function (req, res) {
-  res.send('Login page')
+  // res.send('Login page')
   // res.redirect('/')
+  res.render('login')
 })
 
 // POST 登入
