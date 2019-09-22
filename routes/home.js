@@ -15,13 +15,13 @@ const Query = require('../lib/query.js')
 const query = new Query()
 
 router.get('/', authenticated, function (req, res) {
-
+  console.log(req.user)
   Record.find({ userId: req.user._id }).sort({ date: 'desc' }).then(records => {
 
     // 計算所有消費記錄的總額：
     const totalAmount = calculate.totalPrice(records)
 
-    res.render('index', { records, totalAmount })
+    res.render('index', { records, totalAmount, user: req.user })
   })
 })
 
