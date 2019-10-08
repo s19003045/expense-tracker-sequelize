@@ -58,7 +58,7 @@ const recordsForNewPage = {
     title: '日期',
     required: true,
     tag: '*',
-    htmlInputType: 'text',
+    htmlInputType: 'date',
     hint: '必填欄位',
     fontAwesome: '',
     inputId: 'datepicker',

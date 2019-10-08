@@ -43,7 +43,7 @@ app.use(bodyParser.json())
 app.use(express.static('public'))
 
 // Set up template engine 
-app.engine('handlebars', exphbs())
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 // set session
@@ -100,7 +100,7 @@ app.use('/user', require('./routes/user'))
 
 app.use('/auth', require('./routes/auth'))
 
-
+app.use('/analysis', require('./routes/analysis'))
 // Server start
 app.listen(process.env.PORT || port, () => {
   console.log(`Express server start`)

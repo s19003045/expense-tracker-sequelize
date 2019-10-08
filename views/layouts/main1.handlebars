@@ -41,7 +41,7 @@
       </ul>
     </nav>
   </header>
-  <main>
+  <main class="">
     <div class="container mt-3">
       {{{body}}}
     </div>
@@ -90,12 +90,7 @@
 
 
       //date picker
-      $('input[id="datepicker"]').daterangepicker({
-        singleDatePicker: true,
-        showDropdowns: true,
-      }, function (start, end, label) {
-        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'))
-      })
+
     })
 
   </script>

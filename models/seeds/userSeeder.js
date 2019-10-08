@@ -20,12 +20,14 @@ db.on('error', () => {
 db.once('open', () => {
 
   // Add seeds to mongoDB
-  userList.forEach(element => {
+  userList.forEach((element, index) => {
     console.log(element)
     bcrypt.genSalt(10, (err, salt) => {
       if (err) return console.error(err)
+      console.log(index, '(salt): ', salt)
       bcrypt.hash(element.password, salt, (err, hash) => {
         if (err) throw err
+        console.log(index, '(hash): ', hash)
         User
           .create({
             name: element.name,
@@ -38,7 +40,6 @@ db.once('open', () => {
           .catch(err => { console.log(err) })
       })
     })
-
+    console.log(index, 'hello')
   })
-
 })

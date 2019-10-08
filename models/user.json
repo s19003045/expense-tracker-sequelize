@@ -9,6 +9,21 @@
       "name": "Jenny",
       "email": "user2@example.com",
       "password": "12345678"
+    },
+    {
+      "name": "Abby",
+      "email": "user3@example.com",
+      "password": "12345678"
+    },
+    {
+      "name": "Doris",
+      "email": "user4@example.com",
+      "password": "12345678"
+    },
+    {
+      "name": "Oliver",
+      "email": "user5@example.com",
+      "password": "12345678"
     }
   ]
 }

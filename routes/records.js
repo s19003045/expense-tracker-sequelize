@@ -24,7 +24,8 @@ router.get('/', authenticated, function (req, res) {
 // 新增一筆 record
 router.post('/', authenticated, function (req, res) {
   const { category, name, unitPrice, amount, merchant, date, description } = req.body
-
+  console.log('date:', date)
+  console.log('typeofDate:', typeof (date))
   Record.create({
     name: name,
     category: category,
