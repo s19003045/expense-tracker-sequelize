@@ -3,15 +3,19 @@ const express = require('express')
 // 建立一個 router 物件
 const router = express.Router()
 
-const Record = require('../models/record.js')
-const User = require('../models/user.js')
+const db = require('../models')
+const User = db.User
+const Record = db.Record
+
+// const Record = require('../models/record.js')
+// const User = require('../models/user.js')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
-const userObj = require('../models/userObj')
+
+const userObj = require('../models/htmlInputSetting/userObj')
 
 // GET 註冊頁面
 router.get('/register', function (req, res) {
-
   res.render('register', { userObj })
 });
 
@@ -37,7 +41,7 @@ router.post('/register', function (req, res) {
   if (errors.length > 0) {
     res.render('register', { errors, name, email, password, password2 })
   } else {
-    User.findOne({ email: email }).then(user => {
+    User.findOne({ where: { email: email } }).then(user => {
       if (user) {
         console.log('User already exists')
         errors.push({ message: '已有人註冊此 email' })
@@ -77,11 +81,10 @@ router.post('/login', function (req, res, next) {
   passport.authenticate('local', {
     successRedirect: '/', // 登入成功會回到根目錄
     failureRedirect: '/user/login', // 失敗會留在登入頁面
-    failureMessage: true,
     failureFlash: true,
-    successMessage: true,
-    successFlash: true,
-    badRequestMessage: '您沒有輸入帳號或密碼',
+    failureMessage: req.flash('failure_msg', '帳號/密碼錯誤'),
+    // successMessage: req.flash('success_msg', '你已成功登入'),
+    // successFlash: true
   })(req, res, next)
 })
 

@@ -6,15 +6,18 @@ const LocalStrategy = require('passport-local').Strategy
 // 其 Strategy constructor 存成 FacebookStrategy 
 const FacebookStrategy = require('passport-facebook').Strategy
 
-const mongoose = require('mongoose')
-const User = require('../models/user')
+const db = require('../models')
+const User = db.User
+const Record = db.Record
 const bcrypt = require('bcryptjs')
 
 module.exports = passport => {
   passport.use(
     new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
       User.findOne({
-        email: email
+        where: {
+          email: email
+        }
       }).then(user => {
         if (!user) {
           return done(null, false, { message: 'That email is not registered' })
@@ -46,7 +49,7 @@ module.exports = passport => {
       console.log(profile)
 
       // expense-tracker API server 向自己的 mongoDB 資料庫確認是否已有人已此 email 建立帳號 
-      User.findOne({ email: profile._json.email }
+      User.findOne({ where: { email: profile._json.email } }
       ).then(user => {
         // 如果 email 不存在就建立新的使用者
         if (!user) {
@@ -89,7 +92,7 @@ module.exports = passport => {
   })
 
   passport.deserializeUser((id, done) => {
-    User.findById(id, (err, user) => {
+    User.findByPk(id, (err, user) => {
       done(err, user)
     })
   })

@@ -5,8 +5,12 @@ const router = express.Router()
 
 const { authenticated } = require('../config/auth')
 
-const Record = require('../models/record')
-const record = new Record()
+const db = require('../models')
+const User = db.User
+const Record = db.Record
+
+// const Record = require('../models/record')
+// const record = new Record()
 
 const Calculate = require('../lib/calculate.js')
 const calculate = new Calculate()
@@ -14,7 +18,7 @@ const calculate = new Calculate()
 const Query = require('../lib/query.js')
 const query = new Query()
 
-const recordsForNewPage = require('../models/recordsForNewPage.js')
+// const recordsForNewPage = require('../models/recordsForNewPage.js')
 
 // 列出所有 record
 router.get('/', authenticated, function (req, res) {

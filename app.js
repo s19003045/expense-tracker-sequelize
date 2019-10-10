@@ -14,9 +14,6 @@ const db = require('./models')
 const User = db.User
 const Record = db.Record
 
-// const mongoose = require('mongoose')
-// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/record', { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
-// const db = mongoose.connection
 
 const methodOverride = require('method-override')
 const handlebars = require('handlebars')
@@ -28,15 +25,6 @@ const session = require('express-session')
 // import connect-flash
 const flash = require('connect-flash')
 
-// // 使用"連續"監聽器：listen to error
-// db.on('error', () => {
-//   console.log('mongoose connect error')
-// })
-
-// // 使用"一次性"監聽器：listen to success
-// db.once('open', () => {
-//   console.log('mongoose connect success')
-// })
 
 // override with POST having ?_method=DELETE
 app.use(methodOverride('_method'))
@@ -97,21 +85,11 @@ handlebars.registerHelper("ifEquals", function (v1, v2, options) {
 
 // ===============route setting=============
 
-app.get('/', (req, res) => {
-  res.send('index page')
-})
-// app.use('/', require('./routes/home'));
+app.use('/', require('./routes/home'));
 
 // app.use('/records', require('./routes/records'))
 
-// app.use('/user', require('./routes/user'))
-app.post('/users/register', (req, res) => {
-  User.create({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password
-  }).then(user => res.redirect('/'))
-})
+app.use('/user', require('./routes/user'))
 
 // app.use('/auth', require('./routes/auth'))
 
