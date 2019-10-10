@@ -19,14 +19,19 @@ module.exports = passport => {
           email: email
         }
       }).then(user => {
+
         if (!user) {
           return done(null, false, { message: 'That email is not registered' })
         }
         bcrypt.compare(password, user.password, (err, isMatch) => {
           if (err) throw err
           if (isMatch) {
+            console.log('password match')
+            // console.log('user:', user)
+
             return done(null, user)
           } else {
+            console.log('password not match')
             return done(null, false, { message: 'Email and Password incorrect' })
           }
         })
@@ -88,12 +93,11 @@ module.exports = passport => {
 
   // passport 為了support login sessions，passport 必須把 user 實例 序列化存進 session(session 儲存區)，也必須從 session(session 儲存區) 中反序列化成 user 實例
   passport.serializeUser((user, done) => {
-    done(null, user.id)  //只把 user ID 序列化存進 session(session 儲存區)，是為了縮小檔案大小
+    done(null, user.id)
   })
-
   passport.deserializeUser((id, done) => {
-    User.findByPk(id, (err, user) => {
-      done(err, user)
+    User.findByPk(id).then((user) => {
+      done(null, user)
     })
   })
 }

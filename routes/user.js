@@ -82,7 +82,7 @@ router.post('/login', function (req, res, next) {
     successRedirect: '/', // 登入成功會回到根目錄
     failureRedirect: '/user/login', // 失敗會留在登入頁面
     failureFlash: true,
-    failureMessage: req.flash('failure_msg', '帳號/密碼錯誤'),
+    failureMessage: req.flash('failure_msg', '帳號/密碼錯誤')
     // successMessage: req.flash('success_msg', '你已成功登入'),
     // successFlash: true
   })(req, res, next)
