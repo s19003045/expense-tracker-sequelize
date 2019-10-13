@@ -18,7 +18,7 @@ const calculate = new Calculate()
 const Query = require('../lib/query.js')
 const query = new Query()
 
-// const recordsForNewPage = require('../models/recordsForNewPage.js')
+const recordsForNewPage = require('../models/htmlInputSetting/recordsForNewPage.js')
 
 // 列出所有 record
 router.get('/', authenticated, function (req, res) {
@@ -28,9 +28,9 @@ router.get('/', authenticated, function (req, res) {
 // 新增一筆 record
 router.post('/', authenticated, function (req, res) {
   const { category, name, unitPrice, amount, merchant, date, description } = req.body
-  console.log('date:', date)
-  console.log('typeofDate:', typeof (date))
-  Record.create({
+  // console.log('date:', date)
+  // console.log('typeofDate:', typeof (date))
+  Record.build({
     name: name,
     category: category,
     unitPrice: unitPrice,
@@ -38,10 +38,18 @@ router.post('/', authenticated, function (req, res) {
     merchant: merchant,
     date: date,
     description: description,
-    userId: req.user._id
+    UserId: req.user.id,
+    // itemTotalPrice: 100
   })
+    .save(record => {
+      console.log(record)
+    })
 
+  // Record.create({
+
+  // })
   res.redirect('/')
+
 })
 
 // 新增 record 頁面
@@ -84,47 +92,45 @@ router.get('/search', authenticated, function (req, res) {
 
 // 編輯 record 頁面
 router.get('/:id/edit', authenticated, function (req, res) {
-  Record.findOne({ _id: req.params.id }, (err, record) => {
-    // console.log(typeof (record.date.toJSON()))
-    res.render('edit', { recordsForNewPage, record })
-  })
-
+  Record.findOne({ where: { id: req.params.id } })
+    .then(record => {
+      res.render('edit', { recordsForNewPage, record })
+    })
 })
 
 // 送出編輯 record
 router.put('/:id/edit', authenticated, function (req, res) {
   const { category, name, unitPrice, amount, merchant, date, description } = req.body
 
-  Record.findOne({ _id: req.params.id }, (err, record) => {
-    if (err) return console.error(err)
-    record.name = name
-    record.category = category
-    record.unitPrice = unitPrice
-    record.amount = amount
-    record.merchant = merchant
-    record.date = date
-    record.description = description
+  Record.findOne({ where: { id: req.params.id } })
+    .then(record => {
+      record.name = name
+      record.category = category
+      record.unitPrice = unitPrice
+      record.amount = amount
+      record.merchant = merchant
+      record.date = date
+      record.description = description
 
-    record.save(err => {
-      if (err) return console.error(err)
-      res.redirect('/')
+      record.save(err => {
+        if (err) return console.error(err)
+        res.redirect('/')
+      })
     })
-  })
+    .catch(err => console.log(err))
 })
 
 // 刪除 record
 router.delete('/:id/delete', authenticated, function (req, res) {
   console.log(req.params.id)
-  Record.findOne({ _id: req.params.id }, (err, record) => {
-    if (err) return console.error(err)
-    console.log(record)
-    record.remove((err) => {
-      if (err) return console.error(err)
+  Record.findOne({ where: { id: req.params.id } })
+    .then(record => {
+      console.log(record)
+      record.destroy((err) => {
+        if (err) return console.error(err)
+      })
+      res.redirect('/')
     })
-    res.redirect('/')
-
-  })
-
 })
 
 // exports router

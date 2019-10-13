@@ -87,7 +87,7 @@ handlebars.registerHelper("ifEquals", function (v1, v2, options) {
 
 app.use('/', require('./routes/home'));
 
-// app.use('/records', require('./routes/records'))
+app.use('/records', require('./routes/records'))
 
 app.use('/user', require('./routes/user'))
 
