@@ -1,21 +1,17 @@
-# 實作前端 + 後端：打造記帳本
-
-## 建議
-
-熟悉 HTML 、CSS、JavaScript 語法，且瞭解 Bootstrap、Font-awesome 前端框架的使用。
+# Project( Expense traker ) with MySQL database
 
 ## 目標
 
-- 打造記帳本 API。
-- 建立 mongoDB 資料庫。
-- 使用 mongoose 連接 mongoDB 資料庫。
+- 打造 Expense-tracker API
+- 建立 MySQL 資料庫
+- 使用 Sequelize 連接 mySQL 資料庫
+- record CRUD
 - 建立使用者註冊/登入/登出功能
 - 第三方登入
 
 ## 特色
 
 - MVC model & RESTful
-- RWD
 
 ## 網站功能
 
@@ -30,11 +26,12 @@
 
 ## 後端工具
 
-Node.js、Express、Express-handlebars
-mongoDB、mongoose、method-override、
+Node.js、Express、Express-handlebars、method-override、
 express-session、passport、
 passport-local、passport-facebook、bcryptjs、
 connect-flash、dotenv
+sequelize、sequelize-cli、mysql2
+database: MySQL
 
 ## 環境建置
 
@@ -71,31 +68,29 @@ connect-flash、dotenv
 
   - 以 nodemon 啟動伺服器的指令如下(假設 app.js 是伺服器啟動的進入點)：`nodemon app.js`
 
-- 安裝 mongoDB
+- 安裝 MySQL
 
-  - 官方下載：https://www.mongodb.com/download-center/community
+  - 至 MySQL 官方下載頁（Windows 專屬） https://dev.mysql.com/downloads/windows/installer/
 
-- 註冊 heroku 及下載 CLI
+<!-- - 註冊 heroku 及下載 CLI
   - 註冊 heroku 帳號：https://www.heroku.com/home
-  - 下載 heroku CLI：https://devcenter.heroku.com/articles/heroku-cli#download-and-install
+  - 下載 heroku CLI：https://devcenter.heroku.com/articles/heroku-cli#download-and-install -->
 
 ## 安裝流程
 
 - 下載專案
-  - 從終端機下載：`https://github.com/s19003045/expense-tracker.git`
+  - 從終端機下載：`https://github.com/s19003045/expense-tracker-sequelize.git`
   - 直接點選 download 下載
 - 開啟終端機，進入專案資料夾：
-  `cd xpense-tracker`
+  `cd expense-tracker-sequelize`
 - 安裝 npm：
   `npm install 10.16.3`
 - 使用 npm 安裝 所有套件：
-  `npm install express express-handlebars handlebars body-parser mongoose method-override passport passport-local passport-facebook express-session bcryptjs connect-flash dotenv`
+  `npm install express express-handlebars handlebars body-parser method-override passport passport-local passport-facebook express-session bcryptjs connect-flash dotenv mysql2 sequelize sequelize-cli`
 
-- 將帳本記錄種子清單儲存至 mongoDB 資料庫：
-
-  - `cd 專案資料夾/models/seeds`
-  - 建立使用者種子清單至本地端 mongoDB 資料庫 `node userSeeder.js`
-  - 建立記帳記錄種子清單至本地端 mongoDB 資料庫 `node user_record_seeder.js`
+- 種子清單：
+  terminal 專案資料夾路徑執行：
+  `npx sequelize-cli db:seed:all`
 
 - 資料夾新增 .env 檔案，在檔案中設定環境變數，在開發階段使用。請至 facebook developer 申請 Client_ID、Client_SECRET，並存到 .env 檔案中。
 
@@ -106,9 +101,9 @@ connect-flash、dotenv
 - 使用 package.json 的 scripts 執行：
   `npm run dev`
 - server 啟動成功：
-  `server listen to http://localhost:3000`
-- 連線 mongoDB 成功：
-  `connect to mongoDB successifully !`
+  `Express server start`
+- 連線 MySQL 成功：
+  `Connection has been established successfully.`
 - 啟動瀏灠器：
   網址：http://localhost:3000
 
@@ -116,7 +111,6 @@ connect-flash、dotenv
 
 - mobile UI
   ![mobile demo](https://github.com/s19003045/expense-tracker/blob/master/imagesForGithub/mobile/expense-tracker-demo.png)
-  
 
 ## 畫面
 
