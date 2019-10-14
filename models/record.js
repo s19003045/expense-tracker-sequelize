@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     date: DataTypes.DATE,
     itemTotalPrice: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       defaultValue: 0,
       // get() {
       //   const unitPrice = this.getDataValue('unitPrice');

@@ -36,7 +36,7 @@ router.post('/', authenticated, function (req, res) {
     unitPrice: unitPrice,
     amount: amount,
     merchant: merchant,
-    date: date,
+    date: new Date(date),
     description: description,
     UserId: req.user.id,
     // itemTotalPrice: 100
@@ -66,27 +66,28 @@ router.get('/search', authenticated, function (req, res) {
   const queryCategory = req.query.category || regexp
 
   // 先以 category 來filter，再依 daterange 來 filter
-  Record.find({ userId: req.user._id }).where('category', queryCategory).sort({ date: 'desc' }).then(recordSorted => {
+  Record.findAll({ where: { userId: req.user.id, category: regexp }, order: [['date', 'DESC']] })
+    .then(recordSorted => {
 
-    if (daterange === '') {
-      // 不用再篩選
-      const records = recordSorted
+      if (daterange === '') {
+        // 不用再篩選
+        const records = recordSorted
 
-      // 計算總支出
-      const totalAmount = calculate.totalPrice(records)
-      // render 至 index ，放入四個物件作渲染畫面用
-      res.render('index', { records, totalAmount, daterange, category })
-    } else {
-      // 依 daterange 篩選
-      const records = query.filterRecInrange(recordSorted, req.query.daterange)
+        // 計算總支出
+        const totalAmount = calculate.totalPrice(records)
+        // render 至 index ，放入四個物件作渲染畫面用
+        res.render('index', { records, totalAmount, daterange, category })
+      } else {
+        // 依 daterange 篩選
+        const records = query.filterRecInrange(recordSorted, req.query.daterange)
 
-      // 計算總支出
-      const totalAmount = calculate.totalPrice(records)
-      // render 至 index ，放入四個物件作渲染畫面用
-      res.render('index', { records, totalAmount, daterange, category })
-    }
+        // 計算總支出
+        const totalAmount = calculate.totalPrice(records)
+        // render 至 index ，放入四個物件作渲染畫面用
+        res.render('index', { records, totalAmount, daterange, category })
+      }
 
-  })
+    })
 
 })
 
@@ -122,10 +123,10 @@ router.put('/:id/edit', authenticated, function (req, res) {
 
 // 刪除 record
 router.delete('/:id/delete', authenticated, function (req, res) {
-  console.log(req.params.id)
+  console.log('recordId:', req.params.id)
   Record.findOne({ where: { id: req.params.id } })
     .then(record => {
-      console.log(record)
+      console.log(record.name)
       record.destroy((err) => {
         if (err) return console.error(err)
       })
