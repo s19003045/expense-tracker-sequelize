@@ -72,6 +72,19 @@
   <script>
     $(function () {
 
+      //index page 的 category 類別可以取消選取
+      $('.btn-group').on('click', 'label.btn-category', function (e) {
+        console.log(e)
+        if ($(this).hasClass('active')) {
+          setTimeout(function () {
+
+            $(this).removeClass('active').find('input').prop('checked', false);
+
+            $(this).removeClass('focus')
+          }.bind(this), 10);
+        }
+      });
+
       //daterange picker
       $('input[name="daterange"]').daterangepicker({
         autoUpdateInput: false,

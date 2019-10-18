@@ -11,8 +11,8 @@ module.exports = {
       date: new Date(),
       createdAt: new Date(),
       updatedAt: new Date(),
-      userId: 1
-      // itemTotalPrice: 110
+      userId: 1,
+      itemTotalPrice: 110
     }], {});
   },
 

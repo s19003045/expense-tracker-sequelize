@@ -87,6 +87,10 @@ handlebars.registerHelper("ifEquals", function (v1, v2, options) {
 
 app.use('/', require('./routes/home'));
 
+app.get('/', (req, res) => {
+  res.redirect('https://www.google.com')
+})
+
 app.use('/records', require('./routes/records'))
 
 app.use('/user', require('./routes/user'))
@@ -94,6 +98,7 @@ app.use('/user', require('./routes/user'))
 // app.use('/auth', require('./routes/auth'))
 
 // app.use('/analysis', require('./routes/analysis'))
+
 // Server start
 app.listen(process.env.PORT || port, () => {
   console.log(`Express server start`)

@@ -9,6 +9,10 @@ const db = require('../models')
 const User = db.User
 const Record = db.Record
 
+// import sequelize，use Sequelize.Op
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op
+
 // const Record = require('../models/record')
 // const record = new Record()
 
@@ -63,10 +67,16 @@ router.get('/search', authenticated, function (req, res) {
   const { daterange, category } = req.query
   console.log(req.query)
   let regexp = new RegExp('')
-  const queryCategory = req.query.category || regexp
+  let queryCategory
+  if (req.query.category) {
+    queryCategory = [req.query.category]
+  } else {
+    queryCategory = ['餐飲食品', '休閒娛樂', '交通出行', '家居物業', '其他']
+  }
 
+  console.log('queryCategory:', queryCategory)
   // 先以 category 來filter，再依 daterange 來 filter
-  Record.findAll({ where: { userId: req.user.id, category: regexp }, order: [['date', 'DESC']] })
+  Record.findAll({ where: { userId: req.user.id, category: { [Op.or]: queryCategory } }, order: [['date', 'DESC']] })
     .then(recordSorted => {
 
       if (daterange === '') {
