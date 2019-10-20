@@ -69,7 +69,7 @@ router.get('/search', authenticated, function (req, res) {
   let regexp = new RegExp('')
   let queryCategory
   if (req.query.category) {
-    queryCategory = [req.query.category]
+    queryCategory = category
   } else {
     queryCategory = ['餐飲食品', '休閒娛樂', '交通出行', '家居物業', '其他']
   }
